@@ -1,0 +1,47 @@
+ALGORITHM algorithm_name
+
+PROCEDURE swap(VAR x: INTEGER, VAR y:INTEGER)
+VAR
+    temp: INTEGER;
+BEGIN
+    temp := x;
+    x := y;
+    y := temp;
+END
+
+PROCEDURE read_array(VAR T : ARRAY_OF INTEGER, VAR n:INTEGER)
+VAR
+    i: INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Read(T[i]);
+    END_FOR
+END
+
+
+VAR
+    T : ARRAY_OF INTEGER[];
+    i, j: INTEGER;
+
+    
+BEGIN
+    Write("Give me the number of elements");
+    Read(numberOfElements);
+
+    read_array(T, numberOfElements);
+    //sort the two value of the array if they are not sorted
+    IF (T[0] > T[1]) THEN
+             swap(T[0], T[1]) 
+    END_IF
+
+    FOR i FROM 2 TO numberOfElements-1 STEP 1  DO
+
+        FOR j FROM 0 TO i-1 STEP 1  DO   
+            IF (T[j] >= T[i]) THEN
+                swap(T[i], T[j])
+            END_IF
+        END_FOR
+    END_FOR
+
+
+END
